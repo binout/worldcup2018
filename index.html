@@ -63,16 +63,18 @@
     <script src="data.js" ></script>
     <script>
       let dataTable = document.getElementById('data-table');
-      Object.keys(PRONOS).forEach(player => {
-          let scores = PRONOS[player];
-          let tr = document.createElement('tr')
-          let name = document.createElement('th');
-          name.textContent = player;
-          tr.appendChild(name);
-          scores.forEach(score => {
-            let td = document.createElement('td');
-            td.textContent = score
-            tr.appendChild(td)
+      Object.keys(PRONOS)
+          .sort((k1,k2) => PRONOS[k2].slice(-1)[0] - PRONOS[k1].slice(-1)[0])
+          .forEach(player => {
+            let scores = PRONOS[player];
+            let tr = document.createElement('tr')
+            let name = document.createElement('th');
+            name.textContent = player;
+            tr.appendChild(name);
+            scores.forEach(score => {
+              let td = document.createElement('td');
+              td.textContent = score
+              tr.appendChild(td)
           })
           dataTable.appendChild(tr);
       });
