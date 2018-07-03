@@ -40,127 +40,7 @@
               <th scope="col">4 - 3</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th>Elise</th>
-              <td>3 - 0</td>
-              <td>3 - 1</td>
-              <td>1 - 1</td>
-              <td>1 - 0</td>
-              <td>6</td>
-            </tr>
-            <tr>
-              <th>Eric</th>
-              <td>4 - 1</td>
-              <td>2 - 0</td>
-              <td>1 - 0</td>
-              <td>2 - 1</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <th>Thibault</th>
-              <td>2 - 0</td>
-              <td>4 - 1</td>
-              <td>3 - 2</td>
-              <td>3 - 0</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <th>Anne-Sophie</th>
-              <td>2 - 0</td>
-              <td>2 - 0</td>
-              <td>2 - 0</td>
-              <td>2 - 0</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <th>Sandrine</th>
-              <td>4 - 1</td>
-              <td>3 - 1</td>
-              <td>2 - 1</td>
-              <td>0 - 1</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <th>Estelle</th>
-              <td>3 - 0</td>
-              <td>2 - 0</td>
-              <td>2 - 1</td>
-              <td>2 - 1</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <th>Amélie</th>
-              <td>3 - 0</td>
-              <td></td>
-              <td></td>
-              <td>2 - 1</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <th>Yves</th>
-              <td>3 - 0</td>
-              <td>4 - 0</td>
-              <td>3 - 0</td>
-              <td>0 - 0</td>
-              <td>2</td>
-            </tr>
-            <tr>
-              <th>Delphine</th>
-              <td>3 - 0</td>
-              <td>2 - 0</td>
-              <td>1 - 0</td>
-              <td>2 - 1</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <th>Benoit <span class="oi oi-star"></span> </th>
-              <td>2 - 0</td>
-              <td>1 - 0</td>
-              <td>2 - 1</td>
-              <td>3 - 0</td>
-              <td>7</td>
-            </tr>
-            <tr>
-              <th>Hadrien</th>
-              <td>3 - 1</td>
-              <td>3 - 1</td>
-              <td>2 - 1</td>
-              <td>2 - 1</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <th>Mika</th>
-              <td>2 - 0</td>
-              <td>2 - 0</td>
-              <td>2 - 0</td>
-              <td>3 - 2</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <th>Carole</th>
-              <td>1 - 1</td>
-              <td>2 - 1</td>
-              <td>1 - 0</td>
-              <td></td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <th>Cécile</th>
-              <td>2 - 1</td>
-              <td>3 - 1</td>
-              <td>1 - 1</td>
-              <td>1 - 1</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <th>Yoann</th>
-              <td></td>
-              <td>1 - 1</td>
-              <td></td>
-              <td>1 - 0</td>
-              <td>3</td>
-            </tr>
+          <tbody id="data-table">   
           </tbody>
         </table>
         
@@ -180,7 +60,22 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="data.js" ></script>
     <script>
+      let dataTable = document.getElementById('data-table');
+      Object.keys(PRONOS).forEach(player => {
+          let scores = PRONOS[player];
+          let tr = document.createElement('tr')
+          let name = document.createElement('th');
+          name.textContent = player;
+          tr.appendChild(name);
+          scores.forEach(score => {
+            let td = document.createElement('td');
+            td.textContent = score
+            tr.appendChild(td)
+          })
+          dataTable.appendChild(tr);
+      });
     </script>
-  </body>
+    </body>
 </html>
