@@ -34,12 +34,7 @@
               <th scope="col">(1/4) <br/> 🇫🇷 - 🇺🇾</th>
               <th scope="col" rowspan="2">Score</th>
             </tr>
-            <tr>
-              <th scope="col">2 - 1</th>
-              <th scope="col">1 - 0</th>
-              <th scope="col">0 - 0</th>
-              <th scope="col">4 - 3</th>
-              <th scope="col">?</th>
+            <tr id="data-score">
             </tr>
           </thead>
           <tbody id="data-table">   
@@ -72,6 +67,16 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="data.js" ></script>
     <script>
+      // Render scores
+      let dataScore = document.getElementById('data-score');
+      SCORES.forEach(score => {
+        let th = document.createElement('th');
+        th.setAttribute('scope', 'col');
+        th.textContent = score;
+        dataScore.appendChild(th)
+      });
+
+      // Render pronos
       let dataTable = document.getElementById('data-table');
       Object.keys(PRONOS)
           .sort((k1,k2) => PRONOS[k2].slice(-1)[0] - PRONOS[k1].slice(-1)[0])
